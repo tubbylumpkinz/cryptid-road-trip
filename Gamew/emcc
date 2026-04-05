@@ -1,0 +1,22 @@
+emcc main.cpp \
+  -o public/index.html \
+  -O2 \
+  -I/usr/local/include \
+  -L/usr/local/lib \
+  -lraylib \
+  -lGL \
+  -lm \
+  -ldl \
+  -pthread \
+  --js-library socketio.js \
+  --shell-file shell.html \
+  -s USE_GLFW=3 \
+  -s WASM=1 \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  -s MAX_WEBGL_VERSION=2 \
+  -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","UTF8ToString"]' \
+  -s ENVIRONMENT='web' \
+  -s EXPORTED_FUNCTIONS='["_main"]' \
+  -s ASYNCIFY \
+  --preload-file assets@/assets \
+  -DPLATFORM_WEB
